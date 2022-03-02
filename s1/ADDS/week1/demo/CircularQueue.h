@@ -2,6 +2,7 @@
 #define CIRCULAR_QUEUE
 
 #include <array>
+
 // No should not using namespace std;
 
 class CircularQueue {
