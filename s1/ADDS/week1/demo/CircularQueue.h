@@ -1,23 +1,21 @@
-#ifdef CIRCULAR_QUEUE
+#ifndef CIRCULAR_QUEUE
 #define CIRCULAR_QUEUE
-
-#include <array>
 
 // No should not using namespace std;
 
+template <typename T, size_t capacity>;
 class CircularQueue {
     public:
-        void add(int frame);
-        int getNext();
+        void enqueue(T element);
+        T dequeue();
         CircularQueue(int capacity);
-        // ??? ~CircularQueue();
+        ~CircularQueue();
 
     private:
-        int front;
+        int frames_read;
         int capacity;
-        int current_size;
-        std::array<int> frames;
-
+        int frames_written;
+        int* frames;
 };
 
 #endif
