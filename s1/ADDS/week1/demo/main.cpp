@@ -4,12 +4,12 @@
 using namespace std;
 
 int main(void) {
-    CircularQueue myQueue(3);
+    CircularQueue<string, 3> myQueue;
 
-    myQueue.enqueue(2);
-    myQueue.enqueue(3);
-    myQueue.enqueue(4);
-    myQueue.enqueue(5);
+    myQueue.enqueue("hello");
+    myQueue.enqueue("world");
+    myQueue.enqueue("see");
+    myQueue.enqueue("ya");
 
     cout << myQueue.dequeue() << endl;
     cout << myQueue.dequeue() << endl;

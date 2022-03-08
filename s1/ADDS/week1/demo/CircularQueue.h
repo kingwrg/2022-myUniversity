@@ -1,21 +1,24 @@
 #ifndef CIRCULAR_QUEUE
 #define CIRCULAR_QUEUE
 
+#include <stddef.h>
+
 // No should not using namespace std;
 
-template <typename T, size_t capacity>;
+template <typename T, size_t capacity> 
 class CircularQueue {
     public:
         void enqueue(T element);
         T dequeue();
-        CircularQueue(int capacity);
+        CircularQueue();
         ~CircularQueue();
 
     private:
-        int frames_read;
-        int capacity;
-        int frames_written;
-        int* frames;
+        int values_read;
+        int values_written;
+        T* values;
 };
+
+#include "CircularQueue.tpp"  
 
 #endif
