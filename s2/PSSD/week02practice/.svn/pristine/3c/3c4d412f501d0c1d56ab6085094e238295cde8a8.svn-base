@@ -1,0 +1,41 @@
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+class FibonacciDiv2
+{
+    private:
+    vector<int> fibonacci = {0, 1, 1};
+    public:
+    int find(int N)
+    {
+        if (N == 0 || N == 1) return 0;
+
+        int len = 4;
+        while (fibonacci.back() <= N) {
+            fib(len);
+            len++;
+        }
+
+        int curr_len = fibonacci.size();
+        if (fibonacci.at(curr_len-2) == N) return 0;
+        if (N - fibonacci.at(curr_len-2) >= fibonacci.back() - N)
+        {
+            return fibonacci.back() - N;
+        }
+
+        return N - fibonacci.at(curr_len-2);
+    }
+
+    void fib(int n)
+    {
+        int len = fibonacci.size();
+        while (fibonacci.size() < n) 
+        {
+            int temp = fibonacci.at(len-1) + fibonacci.at(len-2);
+            fibonacci.push_back(temp);
+        }
+        return;
+    }
+};

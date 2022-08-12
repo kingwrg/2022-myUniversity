@@ -1,0 +1,30 @@
+#include <string>
+#include <set>
+#include <iostream>
+
+using namespace std;
+
+class EggCartons
+{
+    public:
+    int minCartons(int n)
+    {
+        if (n < 6 || n%2 != 0) return -1;
+
+        if (n%8 == 0) return n/8;
+
+        if (n < 14) {
+            if (n%6 == 0) return n/6;
+            return -1;
+        }
+
+        int result = 0;
+        while (n > 0) {
+            n-=8;
+            result++;
+            if (n%6 == 0) return result + n/6;
+        }
+        
+        return -1;
+    }
+};

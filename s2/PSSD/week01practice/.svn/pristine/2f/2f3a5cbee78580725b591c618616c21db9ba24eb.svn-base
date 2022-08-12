@@ -1,0 +1,36 @@
+#include <string>
+#include <iostream>
+
+using namespace std;
+  
+class StreetParking
+{
+  public:
+  int freeParks(string street)
+  {
+    int result = 0;
+    int n = street.length();
+
+    for (int i = 0; i < n; i++) {
+        if (street.at(i) != '-') {
+            if (street.at(i) == 'S') i++;
+            continue;
+        }
+        if (i+2 < n && street.at(i+2) == 'B') {
+            i+=2;
+            continue;
+        }
+        if (i+1 < n && street.at(i+1) == 'B') {
+            i+=1;
+            continue;
+        }
+        if (i+1 < n && street.at(i+1) == 'S'){
+            i+=2;
+            continue;
+        }
+        result++;
+    }
+    
+    return result;  // return your result
+  }
+};

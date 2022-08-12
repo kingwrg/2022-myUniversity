@@ -1,0 +1,27 @@
+#include <array>
+
+using namespace std;  
+
+class ThrowTheBall
+{
+  public:
+  int timesThrown(int N, int M, int L)
+  {
+    int result = 0;
+    array<int, 50> circle;
+    circle.fill(0);
+
+    int current = 1;
+    while (++circle.at(current) < M) {
+        if (circle.at(current) % 2 != 0) {
+            current = (current + L) % N;
+        } else {
+            current -= L;
+            if (current <= 0) current += N;
+        }
+        result++;
+    }
+
+    return result;  // return your result
+  }
+};

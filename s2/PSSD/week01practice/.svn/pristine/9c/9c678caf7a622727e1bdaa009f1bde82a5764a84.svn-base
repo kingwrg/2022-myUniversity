@@ -1,0 +1,18 @@
+using namespace std;
+  
+class Inchworm
+{
+  public:
+  int lunchtime(int branch, int rest, int leaf)
+  {
+    int result = 1;
+    int distance = 1;
+
+    while (distance <= branch) {
+        distance += rest;
+        if (distance % leaf == 0) result++;
+    }
+
+    return result;  // return your result
+  }
+};

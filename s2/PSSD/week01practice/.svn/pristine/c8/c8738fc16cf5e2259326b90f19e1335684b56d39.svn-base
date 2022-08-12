@@ -1,0 +1,33 @@
+#include <string>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+  
+class CircularLine
+{
+  public:
+  int longestTravel(vector<int> t)
+  {
+    int n = t.size();
+
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += t.at(i);
+    }
+
+    int max = -1;
+    for (int i = 0; i < n ; i++) {
+        int temp = 0;
+        for (int j = i + 1; j < n; j++) {
+            temp += t.at(j-1);
+            // cout << i << " " << j << " " << temp << " " << (sum-temp) << endl;
+            if (temp > (sum - temp)) temp = sum - temp;
+            if (temp > max) max = temp;
+            // cout << max << endl;
+        }
+    }
+
+    return max;  // return your result
+  }
+};

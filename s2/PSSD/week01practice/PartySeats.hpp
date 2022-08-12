@@ -1,0 +1,69 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+
+using namespace std;
+
+bool compareName(string a, string b) 
+{
+    return a<b;
+} 
+
+class PartySeats
+{
+  public:
+  
+
+  vector<string> seating(vector<string> attendees)
+  {
+    vector<string> result;
+    vector<string> boys, girls;
+    int n = attendees.size();
+
+    if (n%2 != 0 || (n/2)%2 != 0 || n < 4) return result;
+
+    for (int i = 0; i < n; i++) {
+        string person = attendees.at(i);
+        string name = getName(person);
+        if (isBoy(person)) boys.push_back(name);
+        else girls.push_back(name);
+    }
+
+    if (boys.size() != girls.size()) return result;
+    sort(boys.begin(), boys.end());
+    sort(girls.begin(), girls.end());
+
+    result.push_back("HOST");
+    for (int i = 0; i < n/4; i++) {
+        result.push_back(girls.at(i));
+        result.push_back(boys.at(i));
+    }
+
+    result.push_back("HOSTESS");
+    for (int i = n/4; i < n/2; i++) {
+        result.push_back(boys.at(i));
+        result.push_back(girls.at(i));
+    }
+
+    return result;  // return your result
+  }
+
+  string getName(string person) 
+  {
+    int space = 0;
+    for (int i = 0; i < person.length(); i++) {
+        if (person.at(i) == ' ') {
+            space = i;
+            break;
+        }
+    }
+    return person.substr(0, space);
+  }
+
+  bool isBoy(string person) 
+  {
+    if (person.at(person.size()-1) == 'l') return false;
+    return true;
+  }
+};
