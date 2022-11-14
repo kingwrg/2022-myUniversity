@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "QuickSum.hpp"
+#include "DownloadingFiles.hpp"
 
 using namespace std;
 
 int main()
 {
-    QuickSum test;
-    cout << test.minSums("0123456789", 45) << endl;
+    DownloadingFiles test;
+    vector<string> temp = {"3 57","2 22"};
+    cout << test.actualTime(temp) << endl;
 }
